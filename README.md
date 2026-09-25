@@ -53,3 +53,70 @@ Total: ~1 hour 10 minutes
 ## 👨‍💻 Author
 Abdul Noor Khan
 BCA Student | City Group of Colleges, Lucknow
+#include<stdio.h>
+
+void main()
+{
+    int choice, num, i, bit;
+    static int totalAnalyzed = 0;
+    
+    do
+    {
+        printf("\n===== BITWISE NUMBER ANALYZER =====\n");
+        printf("1. Check Even or Odd\n");
+        printf("2. Show Binary Representation (8-bit)\n");
+        printf("3. Double the Number (Left Shift)\n");
+        printf("4. Halve the Number (Right Shift)\n");
+        printf("5. Show Total Numbers Analyzed\n");
+        printf("6. Exit\n");
+        printf("Enter your choice: ");
+        scanf("%d", &choice);
+        
+        if(choice >= 1 && choice <= 4)
+        {
+            printf("Enter a number: ");
+            scanf("%d", &num);
+            totalAnalyzed++;
+        }
+        
+        switch(choice)
+        {
+            case 1:
+                if(num & 1)
+                    printf("%d is ODD\n", num);
+                else
+                    printf("%d is EVEN\n", num);
+                break;
+                
+            case 2:
+                printf("Binary (8-bit) of %d: ", num);
+                for(i = 7; i >= 0; i--)
+                {
+                    bit = (num >> i) & 1;
+                    printf("%d", bit);
+                }
+                printf("\n");
+                break;
+                
+            case 3:
+                printf("%d doubled (left shift) = %d\n", num, num << 1);
+                break;
+                
+            case 4:
+                printf("%d halved (right shift) = %d\n", num, num >> 1);
+                break;
+                
+            case 5:
+                printf("Total numbers analyzed so far: %d\n", totalAnalyzed);
+                break;
+                
+            case 6:
+                printf("Thank you for using Bitwise Analyzer!\n");
+                break;
+                
+            default:
+                printf("Invalid choice! Try again.\n");
+        }
+        
+    } while(choice != 6);
+}
